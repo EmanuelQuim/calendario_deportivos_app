@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'archivos_exportados.dart';
+import 'torneos_page.dart'; // Verifica que esta importación esté presente
+
 // Importá tus otras pantallas aquí como:
 // import 'torneos_page.dart';
 // import 'calendario_partidos.dart';
@@ -17,11 +19,14 @@ class MenuPrincipalPage extends StatelessWidget {
         children: [
           ListTile(
             leading: const Icon(Icons.sports_soccer),
-            title: const Text('Torneos'),
-            onTap: () {
-              // Navigator.push(context, MaterialPageRoute(builder: (_) => TorneosPage()));
-            },
-          ),
+             title: const Text('Torneos'),
+             onTap: () {
+              Navigator.push(
+              context,
+               MaterialPageRoute(builder: (_) => const TorneosPage()), // Asegúrate de importar TorneosPage
+    );
+  },
+), // ListTile
           ListTile(
             leading: const Icon(Icons.calendar_today),
             title: const Text('Calendario de Partidos'),

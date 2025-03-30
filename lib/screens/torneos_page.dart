@@ -3,6 +3,8 @@ import 'package:hive/hive.dart';
 import '../models/torneo_model.dart';
 import 'crear_torneo.dart';
 
+
+
 class TorneosPage extends StatefulWidget {
   const TorneosPage({super.key});
 
@@ -16,22 +18,22 @@ class _TorneosPageState extends State<TorneosPage> {
   @override
   void initState() {
     super.initState();
-    torneosBox = Hive.box('torneos');
+    torneosBox = Hive.box('torneos'); // Asegúrate de que la caja esté abierta
   }
 
   void _eliminarTorneo(String id) async {
-    await torneosBox.delete(id);
-    setState(() {});
+    await torneosBox.delete(id); // Elimina el torneo
+    setState(() {}); // Refresca la lista
   }
 
   @override
   Widget build(BuildContext context) {
-    final torneos = torneosBox.values.cast<Torneo>().toList();
+    final torneos = torneosBox.values.cast<Torneo>().toList(); // Obtiene la lista de torneos
 
     return Scaffold(
       appBar: AppBar(title: const Text('Torneos Guardados')),
       body: torneos.isEmpty
-          ? const Center(child: Text('No hay torneos guardados'))
+          ? const Center(child: Text('No hay torneos guardados')) // Muestra mensaje si no hay torneos
           : ListView.builder(
               itemCount: torneos.length,
               itemBuilder: (context, index) {
@@ -44,10 +46,10 @@ class _TorneosPageState extends State<TorneosPage> {
                   ),
                   trailing: IconButton(
                     icon: const Icon(Icons.delete, color: Colors.red),
-                    onPressed: () => _eliminarTorneo(torneo.id),
+                    onPressed: () => _eliminarTorneo(torneo.id), // Elimina el torneo
                   ),
                   onTap: () {
-                    // Aquí después podés navegar a Detalle del Torneo
+                    // Aquí puedes agregar la navegación para el detalle del torneo
                   },
                 );
               },
@@ -57,8 +59,9 @@ class _TorneosPageState extends State<TorneosPage> {
           Navigator.push(
             context,
             MaterialPageRoute(builder: (_) => const CrearTorneoPage()),
-          ).then((_) => setState(() {}));
+          ).then((_) => setState(() {})); // Refresca la pantalla después de agregar un nuevo torneo
         },
+        
         tooltip: 'Crear nuevo torneo',
         child: const Icon(Icons.add),
       ),

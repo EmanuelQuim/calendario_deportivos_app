@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:uuid/uuid.dart';
 import '../models/torneo_model.dart';
-import '../services/partido_service.dart';  // O la ruta correcta según tu estructura de carpetas
+// O la ruta correcta según tu estructura de carpetas
 
 
 

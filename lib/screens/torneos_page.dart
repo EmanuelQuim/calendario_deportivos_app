@@ -59,8 +59,8 @@ class _TorneosPageState extends State<TorneosPage> {
             MaterialPageRoute(builder: (_) => const CrearTorneoPage()),
           ).then((_) => setState(() {}));
         },
-        child: const Icon(Icons.add),
         tooltip: 'Crear nuevo torneo',
+        child: const Icon(Icons.add),
       ),
     );
   }

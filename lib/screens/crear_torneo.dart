@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:uuid/uuid.dart';
 import '../models/torneo_model.dart';
+import '../services/partido_service.dart';  // O la ruta correcta según tu estructura de carpetas
+
+
 
 class CrearTorneoPage extends StatefulWidget {
   const CrearTorneoPage({super.key});
@@ -27,8 +30,10 @@ class _CrearTorneoPageState extends State<CrearTorneoPage> {
 
     final box = Hive.box('torneos');
     await box.put(torneo.id, torneo);
-
-    Navigator.pop(context);
+    if (mounted){
+      Navigator.pop(context); 
+    }
+    
   }
 
   Future<void> _seleccionarFechaInicio() async {

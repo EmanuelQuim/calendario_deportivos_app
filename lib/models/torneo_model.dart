@@ -23,3 +23,4 @@ class Torneo extends HiveObject {
     required this.fechaFin,
   });
 }
+
